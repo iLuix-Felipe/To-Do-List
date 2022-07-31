@@ -1,0 +1,150 @@
+$color-1: #0093E9;
+$color-2: #80D0C7;
+$color-white: #fff;
+$color-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+
+@mixin flex-mid{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+
+body{
+    padding: 20px;
+    min-height: 100vh;
+    @include flex-mid();
+    background: linear-gradient(90deg, $color-1 0%, $color-2 100%);
+}
+.ball{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: $color-white;
+    position: absolute;
+    
+    background: rgba(255, 255, 255);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2.3px);
+    -webkit-backdrop-filter: blur(2.3px);
+    border: 1px solid rgba(255, 255, 255, 0.3); 
+
+    animation: ballMove 5s infinite alternate ease-in-out;
+}
+
+@keyframes ballMove{
+   0%{
+    transform: translate(-150px, 0px);
+   }
+   50%{
+    transform: translate(60px, 120px);
+   }
+   100%{
+    transform: translate(30px, -120px);
+   }
+}
+
+
+
+.container{ 
+    /*CSS glass*/
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5.3px);
+    -webkit-backdrop-filter: blur(5.3px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 40px 20px;
+    width: 40%;
+    min-width: 500px;
+    z-index: 999;
+    
+}
+
+
+.new-task-container{
+    background-color: $color-2;
+    padding: 30px 20px;
+    border-radius: 10px;
+    box-shadow: $color-box-shadow;
+    display: flex;
+}
+
+.new-task-input{
+    flex: 3;
+    font-size: 1rem;
+    border-radius: 8px;
+    padding: 12px;
+    border: 2px solid #d1d3d4;
+    font-weight: 500;
+
+    &:focus{
+        outline: none;
+        border-color: $color-1;
+    }
+    
+}
+
+.new-task-button{
+    flex: 1;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    height: 100%;
+    border: none;
+    color: $color-white;
+    background-color: $color-1;
+    margin-left: 12px;
+    padding: 12px;
+    cursor: pointer;
+}
+
+.tasks-container{
+    background: $color-white;
+    padding: 30px 20px;
+    margin-top: 60px;
+    border-radius: 10px;
+    box-shadow: $color-box-shadow;
+    width: 100%;
+}
+
+.task-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 6px;
+    margin-bottom: 6px;
+
+    p{
+        cursor: pointer;
+    }
+
+    .far{
+        background-color: $color-1;
+        padding: 12px;
+        border-radius: 5px;
+        color: $color-white;
+        cursor: pointer;
+    }
+    p.completed {
+        text-decoration: line-through;
+    }
+}
+
+.error{
+    outline: none;
+    border: 2px solid red !important;
+
+    &::placeholder{
+        color: red;
+    }
+}
+
